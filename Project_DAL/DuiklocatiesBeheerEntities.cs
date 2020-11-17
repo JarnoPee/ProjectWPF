@@ -11,7 +11,7 @@ namespace Project_DAL
 {
     class DuiklocatiesBeheerEntities: DbContext
     {
-        public DuiklocatiesBeheerEntities() : base("DuiklocatiesBeheeerDBConnectionString")
+        public DuiklocatiesBeheerEntities() : base("name=DuiklocatiesBeheeerDBConnectionString")
         {
 
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_WPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,12 @@ namespace Project_WPF
     /// </summary>
     public partial class App : Application
     {
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            LoginViewModel viewModel = new LoginViewModel();
+            Views.LoginView view = new Views.LoginView();
+            view.DataContext = viewModel;
+            view.Show();
+        }
     }
 }

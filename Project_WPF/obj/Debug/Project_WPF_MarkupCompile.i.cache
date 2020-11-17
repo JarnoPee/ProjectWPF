@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\Project\ProjectWPF\Project_WPF\obj\Debug\
+E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\
 Project_WPF
 none
 false
 DEBUG;TRACE
-E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\Project\ProjectWPF\Project_WPF\App.xaml
-11151548125
+E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\App.xaml
+7473965059
 
-61434861427
-16-304761179
-MainWindow.xaml;
+13270766554
+18898819133
+Views\AccountView.xaml;Views\DashboardView.xaml;Views\DuiklocatieToevoegenView.xaml;Views\DuiklocatieView.xaml;Views\FavorietenView.xaml;Views\GekozenDuiklocatieView.xaml;Views\LoginView.xaml;
 
 True
 
