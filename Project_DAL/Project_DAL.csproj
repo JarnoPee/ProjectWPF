@@ -57,6 +57,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Repositories\IRepository.cs" />
+    <Compile Include="Data\Repositories\Repository.cs" />
+    <Compile Include="Data\UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="Data\UnitOfWork\UnitOfWork.cs" />
     <Compile Include="DomainModels\Category.cs" />
     <Compile Include="DomainModels\Customer.cs" />
     <Compile Include="DomainModels\Description.cs" />
@@ -68,6 +72,14 @@
     <Compile Include="Migrations\202011170857495_InitialCreate.designer.cs">
       <DependentUpon>202011170857495_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012080945105_ForeignKeysVerwijderen.cs" />
+    <Compile Include="Migrations\202012080945105_ForeignKeysVerwijderen.designer.cs">
+      <DependentUpon>202012080945105_ForeignKeysVerwijderen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012080946523_ForeignKeysToevoegen.cs" />
+    <Compile Include="Migrations\202012080946523_ForeignKeysToevoegen.designer.cs">
+      <DependentUpon>202012080946523_ForeignKeysToevoegen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -75,13 +87,16 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\Repositories\" />
-    <Folder Include="Data\UnitOfWork\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202011170857495_InitialCreate.resx">
       <DependentUpon>202011170857495_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012080945105_ForeignKeysVerwijderen.resx">
+      <DependentUpon>202012080945105_ForeignKeysVerwijderen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012080946523_ForeignKeysToevoegen.resx">
+      <DependentUpon>202012080946523_ForeignKeysToevoegen.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

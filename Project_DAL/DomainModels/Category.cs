@@ -19,7 +19,8 @@ namespace Project_DAL.DomainModels
         public string Naam { get; set; }
 
         //navigatieproperties
-        public Location Location { get; set; }
+        public ICollection<Location> Locations { get; set; }
+
 
     }
 }

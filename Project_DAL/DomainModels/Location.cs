@@ -39,10 +39,13 @@ namespace Project_DAL.DomainModels
         [Required]
         public string Geschiktheid { get; set; }
 
+        public int CategoryID { get; set; }
+        public int DescriptionID { get; set; }
+        public int PreviewID { get; set; }
         //navigatieproperties
         public ICollection<LocationCustomer> LocationCustomers { get; set; }
-        public ICollection<Category> Categories { get; set; }
-        public ICollection<Description> Descriptions { get; set; }
-        public ICollection<Preview> Previews { get; set; }
+        public Category Category { get; set; }
+        public Description Description { get; set; }
+        public Preview Preview { get; set; }
     }
 }

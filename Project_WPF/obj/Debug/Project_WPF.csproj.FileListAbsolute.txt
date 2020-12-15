@@ -36,3 +36,8 @@ E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Views\GekozenDuiklocatieView.g.cs
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Views\DashboardView.baml
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Views\GekozenDuiklocatieView.baml
+E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Views\RegistrerenView.g.cs
+E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Views\RegistrerenView.baml
+E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\bin\Debug\Project_DAL.dll
+E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\bin\Debug\Project_DAL.pdb
+E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\bin\Debug\Project_DAL.dll.config

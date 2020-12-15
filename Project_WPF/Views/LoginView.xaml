@@ -13,9 +13,11 @@
         TextOptions.TextRenderingMode="Auto"     
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Aanmelden - JP Duik Locaties" Height="350" Width="400">
+        Title="Aanmelden - JP Duik Locaties" Height="550" Width="400">
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -35,5 +37,6 @@
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="80,11,80,11"  />
         <Button  Content="Aanmelden" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="auto"  Command="{Binding}" CommandParameter="Aanmelden" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
         <Button  Content="Registeren" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="auto"  Command="{Binding}" CommandParameter="Registreren" Foreground="#1e88e5" Background="Transparent" BorderBrush="Transparent"/>
+        <Button  Content="dashboard" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="Dashboard" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
     </Grid>
 </Window>

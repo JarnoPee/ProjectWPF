@@ -23,7 +23,6 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -56,5 +55,9 @@
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="3" Height="auto" Width="auto" Margin="5,0.4,5,0" />
         <TextBox x:Name="txtPreview" Text="{Binding Preview.Beschrijving, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Preview:"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="auto" Width="auto" Margin="5,0.4,5,0" />
+        <Button  Content="Locatie Wijzigen" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="LocatieWijzigen" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
+        <Button  Content="Locatie Toevoegen" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="LocatieToevoegen" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
+        <Button  Content="Terug naar dashboard" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="TerugNaarDashboard" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
+        <Button  Content="Locatie Verwijderen" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="LocatieVerwijderen" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
     </Grid>
 </Window>

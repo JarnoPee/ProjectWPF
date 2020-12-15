@@ -5,8 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_WPF.Views"
         mc:Ignorable="d"
-        Title="GekozenDuiklocatieView" Height="450" Width="800">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="16"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"     
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Locatie bekijken - JP Duik Locaties" Height="400" Width="700">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Locatie Toevoegen " HorizontalAlignment="Left" VerticalAlignment="Center" TextElement.FontSize="20" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Height="39"  Width="auto" Margin="30,0,0,0"  />
+        <TextBox x:Name="txtNaam" Text="{Binding Location.Naam, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Naam:"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Height="auto" Width="auto" Margin="5,0.4,5,0" />
+        <TextBox x:Name="txtPrijs" Text="{Binding Location.Prijs, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Prijs:"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="2" Grid.Column="0" Height="auto" Width="auto" Margin="5,0.4,5,0" />
+        <TextBox x:Name="txtLand" Text="{Binding Location.Naam, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Land:"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="3" Grid.Column="0" Height="auto" Width="auto" Margin="5,0.4,5,0" />
+        <TextBox x:Name="txtStad" Text="{Binding Location.Naam, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Stad:"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="3" Grid.Column="1" Height="auto" Width="auto" Margin="5,0.4,5,0" />
+        <TextBox x:Name="txtStraat" Text="{Binding Location.Naam, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Straat:"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Height="auto" Width="auto" Margin="5,0.4,5,0" />
+        <TextBox x:Name="txtHuisnummer" Text="{Binding Location.Naam, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Huisnummer:"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Height="auto" Width="auto" Margin="5,0.4,5,0" />
+        <TextBox x:Name="txtDiepte" Text="{Binding Location.Naam, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Diepte:"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="2" Grid.Column="1" Height="auto" Width="auto" Margin="5,0.4,5,0" />
+        <ComboBox x:Name="cmbCategorien"  
+                  ItemsSource="{Binding Category.Naam, ValidatesOnDataErrors=True}"
+                  SelectedValue="{Binding Category.Naam, ValidatesOnDataErrors=True}" 
+                  SelectedValuePath="Nummer"
+                  materialDesign:HintAssist.Hint="Categorie" IsEditable="true" IsEnabled="{Binding ComboboxEnabled}"
+                  Grid.Row="5" Grid.Column="1" Margin="5,0.4,5,0"  />
+        <TextBox x:Name="txtBeschrijving" Text="{Binding Description.Beschrijving, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Beschrijving:"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="3" Height="auto" Width="auto" Margin="5,0.4,5,0" />
+        <TextBox x:Name="txtPreview" Text="{Binding Preview.Beschrijving, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Preview:"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="auto" Width="auto" Margin="5,0.4,5,0" />
+        <Button  Content="Terug naar dashboard" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="TerugNaarDashboard" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
     </Grid>
 </Window>

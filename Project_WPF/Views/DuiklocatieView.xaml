@@ -29,8 +29,8 @@
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Height="auto" Width="475px" />
         <Button  Content="Zoeken" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="130"  Command="{Binding}" CommandParameter="Zoeken" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
         <DataGrid x:Name="datagridOrderlijnen" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="275" IsReadOnly="True"
-                  ItemsSource="{Binding Locations, ValidatesOnDataErrors=True}"
-                  SelectedItem="{Binding SelectedLocation, ValidatesOnDataErrors=True}" Margin="10"  Width="670">
+                  ItemsSource="{Binding Locations}"
+                  SelectedItem="{Binding SelectedLocation}" Margin="10"  Width="670">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Naam}" Header="Naam" Width="100">
                     <DataGridTextColumn.ElementStyle>

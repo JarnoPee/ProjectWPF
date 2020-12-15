@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Project_DAL
 {
-    class DuiklocatiesBeheerEntities: DbContext
+    public class DuiklocatiesBeheerEntities: DbContext
     {
         public DuiklocatiesBeheerEntities() : base("name=DuiklocatiesBeheeerDBConnectionString")
         {

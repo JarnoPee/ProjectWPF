@@ -4,9 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_WPF.Views"
-        mc:Ignorable="d"
-        Title="DashboardView" Height="450" Width="800">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="16"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"     
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Dashboard - JP Duik Locaties" Height="425" Width="700">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="350"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Dashboard" HorizontalAlignment="Left" VerticalAlignment="Center" TextElement.FontSize="20" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Height="39"  Width="auto" Margin="30,0,0,0"  />
+        <Button Content="Duiklocaties bekijken"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Padding="0" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Width="350" Height="50"  Command="{Binding}" CommandParameter="DuiklocatiesBekijken" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"></Button>
+        <Button Content="Account instellingen"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Padding="0" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Width="350" Height="50"  Command="{Binding}" CommandParameter="AccountInstellingen" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"></Button>
+        <Button Content="Duiklocaties toevoegen"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Padding="0" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Width="350" Height="50"  Command="{Binding}" CommandParameter="DuiklocatieToevoegen" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"></Button>
+        <Button Content="Favorieten"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Padding="0" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Width="350" Height="50"  Command="{Binding}" CommandParameter="Favorieten" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"></Button>
     </Grid>
 </Window>
