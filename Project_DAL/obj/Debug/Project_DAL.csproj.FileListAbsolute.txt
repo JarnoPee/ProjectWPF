@@ -24,10 +24,9 @@ E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_DAL\bin\
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_DAL\bin\Debug\MaterialDesignThemes.Wpf.xml
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_DAL\obj\Debug\Project_DAL.csprojAssemblyReference.cache
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_DAL\obj\Debug\Project_DAL.Migrations.InitialCreate.resources
+E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_DAL\obj\Debug\Project_DAL.Migrations.ConnectionStringAangepast.resources
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_DAL\obj\Debug\Project_DAL.csproj.GenerateResource.cache
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_DAL\obj\Debug\Project_DAL.csproj.CoreCompileInputs.cache
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_DAL\obj\Debug\Project_DAL.csproj.CopyComplete
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_DAL\obj\Debug\Project_DAL.dll
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_DAL\obj\Debug\Project_DAL.pdb
-E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_DAL\obj\Debug\Project_DAL.Migrations.ForeignKeysVerwijderen.resources
-E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_DAL\obj\Debug\Project_DAL.Migrations.ForeignKeysToevoegen.resources

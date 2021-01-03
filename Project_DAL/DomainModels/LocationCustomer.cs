@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project_DAL.DomainModels
+namespace Project_DAL.DomainModels 
 {
     [Table("LocationCustomers")]
-    public class LocationCustomer
+    public class LocationCustomer : BasisModel.Basisklasse
     {
         [Key]
         public int LocationCustomerID { get; set; }

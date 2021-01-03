@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\App.xaml
-8-1882874201
+91193016814
 
-22-1584280275
+231615601392
 191625323231
-Views\AccountView.xaml;Views\DashboardView.xaml;Views\DuiklocatieToevoegenView.xaml;Views\DuiklocatieView.xaml;Views\FavorietenView.xaml;Views\GekozenDuiklocatieView.xaml;Views\LoginView.xaml;Views\RegistrerenView.xaml;
+Components\BindablePasswordBox.xaml;Views\AccountView.xaml;Views\DashboardView.xaml;Views\DuiklocatieToevoegenView.xaml;Views\DuiklocatieView.xaml;Views\FavorietenView.xaml;Views\GekozenDuiklocatieView.xaml;Views\LoginView.xaml;Views\RegistrerenView.xaml;
 
 True
 

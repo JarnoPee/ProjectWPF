@@ -10,23 +10,18 @@ namespace Project_DAL.Data.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-
         private IRepository<Category> _categoryRepo;
         private IRepository<Customer> _customerRepo;
         private IRepository<Description> _descriptionRepo;
         private IRepository<Location> _locationRepo;
         private IRepository<LocationCustomer> _locationCustomerRepo;
         private IRepository<Preview> _previewRepo;
-
-
         public UnitOfWork(DuiklocatiesBeheerEntities duiklocatiesBeheerEntities)
         {
             this.DuiklocatiesBeheerEntities = duiklocatiesBeheerEntities;
 
         }
         private DuiklocatiesBeheerEntities DuiklocatiesBeheerEntities { get; }
-
-
         public IRepository<Category> CategoryRepo
         {
             get

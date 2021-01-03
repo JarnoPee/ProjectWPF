@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Project_DAL.DomainModels
 {
     [Table("Locations")]
-    public class Location
+    public class Location : BasisModel.Basisklasse
     {
         [Key]
         public int LocationID { get; set; }

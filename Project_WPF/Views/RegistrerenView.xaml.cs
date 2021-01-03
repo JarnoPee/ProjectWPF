@@ -23,5 +23,6 @@ namespace Project_WPF.Views
         {
             InitializeComponent();
         }
+
     }
 }

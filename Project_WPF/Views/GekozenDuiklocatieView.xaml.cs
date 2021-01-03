@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_DAL.DomainModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,16 @@ namespace Project_WPF.Views
     /// </summary>
     public partial class GekozenDuiklocatieView : Window
     {
+        private Customer customer;
+
         public GekozenDuiklocatieView()
         {
             InitializeComponent();
+        }
+
+        public GekozenDuiklocatieView(Customer customer)
+        {
+            this.customer = customer;
         }
     }
 }

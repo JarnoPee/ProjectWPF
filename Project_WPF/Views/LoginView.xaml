@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_WPF.Views"
         mc:Ignorable="d"
+        xmlns:components="clr-namespace:Project_WPF.Components"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -23,7 +24,6 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -31,12 +31,10 @@
         </Grid.ColumnDefinitions>
         <Label Content="Welkom bij" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="30" Height="51" Width="auto" />
         <Label Content="JP Duik Locaties " HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextElement.FontSize="25" Height="39"  Width="auto"  />
-        <TextBox x:Name="txtEmail" Text="{Binding Customer.Email, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Emailadres"
+        <TextBox x:Name="txtEmail" Text="{Binding Email, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Emailadres"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="80,11,80,11"  />
-        <TextBox x:Name="txtPaswoord" Text="{Binding Customer.Paswoord, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Paswoord"
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="80,11,80,11"  />
         <Button  Content="Aanmelden" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="auto"  Command="{Binding}" CommandParameter="Aanmelden" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
         <Button  Content="Registeren" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="auto"  Command="{Binding}" CommandParameter="Registreren" Foreground="#1e88e5" Background="Transparent" BorderBrush="Transparent"/>
-        <Button  Content="dashboard" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="Dashboard" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
+        <components:BindablePasswordBox materialDesign:HintAssist.Hint="Wachtwoord"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="80,11,80,11"  Paswoord="{Binding Paswoord, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
     </Grid>
 </Window>

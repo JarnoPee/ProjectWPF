@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasisModel\BasisKlasse.cs" />
     <Compile Include="Data\Repositories\IRepository.cs" />
     <Compile Include="Data\Repositories\Repository.cs" />
     <Compile Include="Data\UnitOfWork\IUnitOfWork.cs" />
@@ -68,17 +69,13 @@
     <Compile Include="DomainModels\LocationCustomer.cs" />
     <Compile Include="DomainModels\Preview.cs" />
     <Compile Include="DuiklocatiesBeheerEntities.cs" />
-    <Compile Include="Migrations\202011170857495_InitialCreate.cs" />
-    <Compile Include="Migrations\202011170857495_InitialCreate.designer.cs">
-      <DependentUpon>202011170857495_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202012150900084_InitialCreate.cs" />
+    <Compile Include="Migrations\202012150900084_InitialCreate.designer.cs">
+      <DependentUpon>202012150900084_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202012080945105_ForeignKeysVerwijderen.cs" />
-    <Compile Include="Migrations\202012080945105_ForeignKeysVerwijderen.designer.cs">
-      <DependentUpon>202012080945105_ForeignKeysVerwijderen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012080946523_ForeignKeysToevoegen.cs" />
-    <Compile Include="Migrations\202012080946523_ForeignKeysToevoegen.designer.cs">
-      <DependentUpon>202012080946523_ForeignKeysToevoegen.cs</DependentUpon>
+    <Compile Include="Migrations\202012150941040_ConnectionStringAangepast.cs" />
+    <Compile Include="Migrations\202012150941040_ConnectionStringAangepast.designer.cs">
+      <DependentUpon>202012150941040_ConnectionStringAangepast.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,16 +84,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011170857495_InitialCreate.resx">
-      <DependentUpon>202011170857495_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012150900084_InitialCreate.resx">
+      <DependentUpon>202012150900084_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012080945105_ForeignKeysVerwijderen.resx">
-      <DependentUpon>202012080945105_ForeignKeysVerwijderen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012080946523_ForeignKeysToevoegen.resx">
-      <DependentUpon>202012080946523_ForeignKeysToevoegen.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012150941040_ConnectionStringAangepast.resx">
+      <DependentUpon>202012150941040_ConnectionStringAangepast.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

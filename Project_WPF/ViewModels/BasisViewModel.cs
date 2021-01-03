@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Project_DAL;
+using Project_DAL.Data.UnitOfWork;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -11,6 +13,7 @@ namespace Project_WPF.ViewModels
 {
     public abstract class BasisViewModel : IDataErrorInfo, INotifyPropertyChanged, ICommand
     {
+        public IUnitOfWork unitOfWork = new UnitOfWork(new DuiklocatiesBeheerEntities());
         //IDataErrorInfo
         public abstract string this[string columnName] { get; }
         public string Error
