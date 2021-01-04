@@ -27,7 +27,6 @@ namespace Project_WPF.ViewModels
             {
                 case "DuiklocatiesBekijken": return true;
                 case "AccountInstellingen": return true;
-                case "DuiklocatieToevoegen": return true;
                 case "Favorieten": return true;
             }
             return true;

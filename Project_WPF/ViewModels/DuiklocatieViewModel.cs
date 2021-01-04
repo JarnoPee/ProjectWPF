@@ -15,7 +15,6 @@ namespace Project_WPF.ViewModels
 {
     public class DuiklocatieViewModel : BasisViewModel, ICommand,  IDisposable
     {
-        new IUnitOfWork unitOfWork = new UnitOfWork(new DuiklocatiesBeheerEntities());
         private Customer customer;
         private Location _selectedLocation;
         public ObservableCollection<Location> Locations { get; set; }
@@ -25,7 +24,7 @@ namespace Project_WPF.ViewModels
             set
             {
                 _selectedLocation = value;
-                NotifyPropertyChanged();
+               // NotifyPropertyChanged(); Niet meer nodig door fody weavers
             }
 
         }
@@ -57,11 +56,22 @@ namespace Project_WPF.ViewModels
         }
         public void OpenDashboard()
         {
-            DashboardViewModel vm = new DashboardViewModel(customer);
-            DashboardView view = new DashboardView();
-            view.DataContext = vm;
-            view.Show();
-            Application.Current.Windows[0].Close();
+            if (customer.IsAdmin == true)
+            {
+                DashboardAdminViewModel vm = new DashboardAdminViewModel(customer);
+                DashboardAdminView view = new DashboardAdminView();
+                view.DataContext = vm;
+                view.Show();
+                Application.Current.Windows[0].Close();
+            }
+            else
+            {
+                DashboardViewModel vm = new DashboardViewModel(customer);
+                DashboardView view = new DashboardView();
+                view.DataContext = vm;
+                view.Show();
+                Application.Current.Windows[0].Close();
+            }
         }
         private void DuiklocatieBekijken()
         {
@@ -90,7 +100,12 @@ namespace Project_WPF.ViewModels
             }
             else
             {
-                MessageBox.Show("Gelieve een locatie te selecteren!");
+                DuiklocatieToevoegenViewModel vm = new DuiklocatieToevoegenViewModel(null, customer);
+                DuiklocatieToevoegenView view = new DuiklocatieToevoegenView();
+                view.DataContext = vm;
+                view.Show();
+                Application.Current.Windows[0].Close();
+
             }
 
 

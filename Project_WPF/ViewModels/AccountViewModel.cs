@@ -104,12 +104,22 @@ namespace Project_WPF.ViewModels
         }
         public void OpenDashboard()
         {
-            DashboardViewModel vm = new DashboardViewModel(customer);
-            DashboardView view = new DashboardView();
-            view.DataContext = vm;
-            view.Show();
-            Application.Current.Windows[0].Close();
-
+            if (customer.IsAdmin == true)
+            {
+                DashboardAdminViewModel vm = new DashboardAdminViewModel(customer);
+                DashboardAdminView view = new DashboardAdminView();
+                view.DataContext = vm;
+                view.Show();
+                Application.Current.Windows[0].Close();
+            }
+            else
+            {
+                DashboardViewModel vm = new DashboardViewModel(customer);
+                DashboardView view = new DashboardView();
+                view.DataContext = vm;
+                view.Show();
+                Application.Current.Windows[0].Close();
+            }
         }
         public void GegevensAanpassen()
         {

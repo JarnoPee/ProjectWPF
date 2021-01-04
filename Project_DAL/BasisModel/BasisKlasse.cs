@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Project_DAL.BasisModel
 {
-    public abstract class Basisklasse : IDataErrorInfo, INotifyPropertyChanged
+    public abstract class Basisklasse : IDataErrorInfo
     {
         [NotMapped]
         public virtual string this[string columnName]
@@ -38,8 +38,6 @@ namespace Project_DAL.BasisModel
                 return "";
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public bool IsGeldig()
         {

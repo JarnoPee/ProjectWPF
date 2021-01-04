@@ -49,6 +49,6 @@
         </DataGrid>
         <Button  Content="Terug naar dashboard" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="TerugNaarDashboard" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
         <Button  Content="Verwijderen uit favorieten" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="VerwijderenLocationCustomer" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
-        <Button  Content="Locatie bekijken" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="TerugNaarDashboard" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
+        <Button  Content="Locatie bekijken" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="LocatieBekijken" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
     </Grid>
 </Window>

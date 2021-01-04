@@ -27,8 +27,10 @@ namespace Project_WPF.ViewModels
         public string Categorie { get; set; }
 
         public Location Location { get; set; }
+        public int locationID;
         public GekozenDuiklocatieViewModel(int locationID, Customer customer)
         {
+            this.locationID = locationID;
             this.customer = customer;
             Location = unitOfWork.LocationRepo.Ophalen(x => x.LocationID == locationID, x => x.Category, x => x.Preview, x => x.Description).SingleOrDefault();
             Naam = Location.Naam;
@@ -60,6 +62,7 @@ namespace Project_WPF.ViewModels
             {
                 case "TerugNaarDashboard": return true;
                 case "ToevoegenLocationCustomer": return true;
+                case "LocatieWijzigen": return true;
             }
             return true;
         }
@@ -70,15 +73,27 @@ namespace Project_WPF.ViewModels
             {
                 case "TerugNaarDashboard": OpenDashboard(); break;
                 case "ToevoegenLocationCustomer": OpenToevoegenLocationCustomer(); break;
+                case "LocatieWijzigen": LocatieWijzigen(); break;
             }
         }
         public void OpenDashboard()
         {
-            DashboardViewModel vm = new DashboardViewModel(customer);
-            DashboardView view = new DashboardView();
-            view.DataContext = vm;
-            view.Show();
-            Application.Current.Windows[0].Close();
+            if (customer.IsAdmin == true)
+            {
+                DashboardAdminViewModel vm = new DashboardAdminViewModel(customer);
+                DashboardAdminView view = new DashboardAdminView();
+                view.DataContext = vm;
+                view.Show();
+                Application.Current.Windows[0].Close();
+            }
+            else
+            {
+                DashboardViewModel vm = new DashboardViewModel(customer);
+                DashboardView view = new DashboardView();
+                view.DataContext = vm;
+                view.Show();
+                Application.Current.Windows[0].Close();
+            }
         }
         public void OpenToevoegenLocationCustomer()
         {
@@ -104,6 +119,41 @@ namespace Project_WPF.ViewModels
                     }
                 }
             }
+        }
+        public void LocatieWijzigen()
+        {
+            Location.Naam = this.Naam;
+            Location.Prijs = this.Prijs;
+            Location.Land = this.Land;
+            Location.Stad = this.Gemeente;
+            Location.Diepte = this.Diepte;
+            Location.Straat = this.Straat;
+            Location.Preview.Beschrijving = this.PreviewBeschrijving;
+            Location.Description.Beschrijving = this.DescriptionBeschrijving;
+            Location.Huisnummer = this.Huisnummer;
+            if (customer.IsGeldig())
+            {
+                unitOfWork.CustomerRepo.Aanpassen(customer);
+                int ok = unitOfWork.Save();
+                if (ok > 0)
+                {
+                    RefreshData(locationID);
+                }
+            }
+        }
+        private void RefreshData(int locationID)
+        {
+            Location = unitOfWork.LocationRepo.Ophalen(x => x.LocationID == locationID, x => x.Category, x => x.Preview, x => x.Description).SingleOrDefault();
+            Naam = Location.Naam;
+            Land = Location.Land;
+            Prijs = Location.Prijs;
+            Straat = Location.Straat;
+            Gemeente = Location.Stad;
+            Diepte = Location.Diepte;
+            Huisnummer = Location.Huisnummer;
+            Categorie = Location.Category.Naam;
+            PreviewBeschrijving = Location.Preview.Beschrijving;
+            DescriptionBeschrijving = Location.Description.Beschrijving;
         }
         public void Dispose()
         {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 namespace Project_DAL.DomainModels
 {
@@ -44,7 +45,11 @@ namespace Project_DAL.DomainModels
 
         [Required]
         public string Paswoord { get; set; }
-        
+        [Required]
+        [DefaultValue("False")]
+        public bool IsAdmin { get; set; }
+
+
         //Navigatieproperties
         public ICollection<LocationCustomer> LocationCustomers { get; set; }
     }

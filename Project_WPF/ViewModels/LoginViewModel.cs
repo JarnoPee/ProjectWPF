@@ -27,7 +27,7 @@ namespace Project_WPF.ViewModels
 
         public string Paswoord { get; set; }
         public string Email { get; set; }
-        public string Foutmelding { get; private set; }
+        public string Foutmelding { get; set; }
         public override bool CanExecute(object parameter)
         {
             switch (parameter.ToString())
@@ -58,25 +58,34 @@ namespace Project_WPF.ViewModels
         }
         public void Login()
         {
-            Email = "Test@hotmail.com";
-            Paswoord = "Test123!";
+            //Gebruiker:  Email = "Test@hotmail.com" / Paswoord = "Test123!"
+            //Admin:  Email = "Admin@hotmail.com" / Paswoord = "Admin!123"
             byte[] data = System.Text.Encoding.ASCII.GetBytes(Paswoord);
             data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
             string hash = System.Text.Encoding.ASCII.GetString(data);
-            Customer customer = unitOfWork.CustomerRepo.Ophalen().Where(x => x.Email == Email && x.Paswoord == hash)
-            .FirstOrDefault();
+            Customer customer = unitOfWork.CustomerRepo.Ophalen().Where(x => x.Email == Email && x.Paswoord == hash).FirstOrDefault();
             if (customer != null)
             {
-                DashboardViewModel vm = new DashboardViewModel(customer);
-                DashboardView view = new DashboardView();
-                view.DataContext = vm;
-                view.Show();
-                Application.Current.Windows[0].Close();
+                if (customer.IsAdmin == true)
+                {
+                    DashboardAdminViewModel vm = new DashboardAdminViewModel(customer);
+                    DashboardAdminView view = new DashboardAdminView();
+                    view.DataContext = vm;
+                    view.Show();
+                    Application.Current.Windows[0].Close();
+                }
+                else
+                {
+                    DashboardViewModel vm = new DashboardViewModel(customer);
+                    DashboardView view = new DashboardView();
+                    view.DataContext = vm;
+                    view.Show();
+                    Application.Current.Windows[0].Close();
+                }
             }
             else
             {
                 Foutmelding = "Email en/of Paswoord is fout!";
-                NotifyPropertyChanged("Foutmelding");
             }
         }
     }
