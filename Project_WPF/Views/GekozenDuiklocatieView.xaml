@@ -32,7 +32,9 @@
         </Grid.ColumnDefinitions>
         <Label Content="Gegevens locatie " HorizontalAlignment="Left" VerticalAlignment="Center" TextElement.FontSize="20" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Height="39"  Width="auto" Margin="30,0,0,0"  />
         <TextBox x:Name="txtNaam" Text="{Binding Naam, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Naam:"
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Height="auto" Width="auto" Margin="5,0.4,5,0" />
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="0"  Height="auto" Width="auto" Margin="5,0.4,5,0" />
+        <TextBox x:Name="txtGeschiktheid" Text="{Binding Geschiktheid, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Geschiktheid:"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="1"  Height="auto" Width="auto" Margin="5,0.4,5,0" />
         <TextBox x:Name="txtPrijs" Text="{Binding Prijs, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Prijs:"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="2" Grid.Column="0" Height="auto" Width="auto" Margin="5,0.4,5,0" />
         <TextBox x:Name="txtLand" Text="{Binding Land, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Land:"
@@ -52,7 +54,6 @@
         <TextBox x:Name="txtPreview" Text="{Binding PreviewBeschrijving, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Preview:"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextWrapping="Wrap" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="auto" Width="auto" Margin="5,0.4,5,0" />
         <Button  Content="Terug naar dashboard" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="TerugNaarDashboard" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
-        <Button  Content="Locatie wijzigen" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="LocatieWijzigen" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
         <Button  Content="Toevoegen aan favorieten" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="ToevoegenLocationCustomer" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
 
     </Grid>

@@ -17,6 +17,10 @@ namespace Project_WPF.ViewModels
     {
         private Customer customer;
         private Location _selectedLocation;
+        public string Naam { get; set; }
+        public string Foutmelding { get; set; }
+
+
         public ObservableCollection<Location> Locations { get; set; }
         public Location SelectedLocation 
         {
@@ -28,7 +32,13 @@ namespace Project_WPF.ViewModels
             }
 
         }
-        public override string this[string columnName] => throw new NotImplementedException();
+        public override string this[string columnName]
+        {
+            get
+            {
+                return "";
+            }
+        }
         public DuiklocatieViewModel(Customer customer) : base()
         {
             this.customer = customer;
@@ -42,6 +52,7 @@ namespace Project_WPF.ViewModels
                 case "TerugNaarDashboard": return true;
                 case "DuiklocatieBekijken": return true;
                 case "DuiklocatieWijzigenOfToevoegen": return true;
+                case "Zoeken": return true;
             }
             return true;
         }
@@ -52,6 +63,7 @@ namespace Project_WPF.ViewModels
                 case "TerugNaarDashboard": OpenDashboard(); break;
                 case "DuiklocatieBekijken": DuiklocatieBekijken(); break;
                 case "DuiklocatieWijzigenOfToevoegen": DuiklocatieWijzigenOfToevoegen(); break;
+                case "Zoeken": Zoeken(); break;
             }
         }
         public void OpenDashboard()
@@ -75,6 +87,7 @@ namespace Project_WPF.ViewModels
         }
         private void DuiklocatieBekijken()
         {
+            Foutmelding = "";
             if (SelectedLocation != null)
             {
                 GekozenDuiklocatieView location = new GekozenDuiklocatieView();
@@ -85,7 +98,7 @@ namespace Project_WPF.ViewModels
             }
             else
             {
-                MessageBox.Show("Gelieve een locatie te selecteren!");
+                Foutmelding= "Gelieve een locatie te selecteren!";
             }
         }
         public void DuiklocatieWijzigenOfToevoegen()
@@ -109,6 +122,30 @@ namespace Project_WPF.ViewModels
             }
 
 
+        }
+        public void Zoeken()
+        {
+            Foutmelding = "";
+            if (IsGeldig())
+            {
+                RefreshLocations();
+                if (Locations == null || Locations.Count <= 0)
+                {
+                    Locations = new ObservableCollection<Location>(unitOfWork.LocationRepo.Ophalen(x => x.Category, x => x.Preview));
+                }
+
+            }
+            else
+            {
+                Foutmelding = this.Error;
+            }
+        }
+        private void RefreshLocations()
+        {
+            string i = Naam;
+            List<Location> listLocation = unitOfWork.LocationRepo.Ophalen(x => x.Naam == i).ToList();
+
+            Locations = new ObservableCollection<Location>(listLocation);
         }
         public void Dispose()
         {

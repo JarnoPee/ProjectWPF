@@ -20,6 +20,7 @@ namespace Project_WPF.ViewModels
         public string Gemeente { get; set; }
         public string Huisnummer { get; set; }
         public string Naam { get; set; }
+        public string Geschiktheid { get; set; }
         public decimal? Prijs { get; set; }
         public string Diepte { get; set; }
         public string DescriptionBeschrijving { get; set; }
@@ -36,13 +37,14 @@ namespace Project_WPF.ViewModels
             Naam = Location.Naam;
             Land = Location.Land;
             Prijs = Location.Prijs;
+            Geschiktheid = Location.Geschiktheid;
             Straat = Location.Straat;
             Gemeente = Location.Stad;
             Diepte = Location.Diepte;
             Huisnummer = Location.Huisnummer;
             Categorie =Location.Category.Naam;
-            PreviewBeschrijving = Location.Preview.Beschrijving;
-            DescriptionBeschrijving = Location.Description.Beschrijving;
+            PreviewBeschrijving = Location.Preview.PreviewBeschrijving;
+            DescriptionBeschrijving = Location.Description.DescriptionBeschrijving;
         }
 
         public override string this[string columnName]
@@ -127,9 +129,10 @@ namespace Project_WPF.ViewModels
             Location.Land = this.Land;
             Location.Stad = this.Gemeente;
             Location.Diepte = this.Diepte;
+            Location.Geschiktheid = this.Geschiktheid;
             Location.Straat = this.Straat;
-            Location.Preview.Beschrijving = this.PreviewBeschrijving;
-            Location.Description.Beschrijving = this.DescriptionBeschrijving;
+            Location.Preview.PreviewBeschrijving = this.PreviewBeschrijving;
+            Location.Description.DescriptionBeschrijving = this.DescriptionBeschrijving;
             Location.Huisnummer = this.Huisnummer;
             if (customer.IsGeldig())
             {
@@ -147,13 +150,14 @@ namespace Project_WPF.ViewModels
             Naam = Location.Naam;
             Land = Location.Land;
             Prijs = Location.Prijs;
+            Geschiktheid = Location.Geschiktheid;
             Straat = Location.Straat;
             Gemeente = Location.Stad;
             Diepte = Location.Diepte;
             Huisnummer = Location.Huisnummer;
             Categorie = Location.Category.Naam;
-            PreviewBeschrijving = Location.Preview.Beschrijving;
-            DescriptionBeschrijving = Location.Description.Beschrijving;
+            PreviewBeschrijving = Location.Preview.PreviewBeschrijving;
+            DescriptionBeschrijving = Location.Description.DescriptionBeschrijving;
         }
         public void Dispose()
         {

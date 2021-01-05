@@ -15,7 +15,7 @@ namespace Project_DAL.DomainModels
         public int PreviewID { get; set; }
 
         [Required]
-        public string Beschrijving { get; set; }
+        public string PreviewBeschrijving { get; set; }
 
         //navigatieproperties
         public ICollection<Location> Locations { get; set; }

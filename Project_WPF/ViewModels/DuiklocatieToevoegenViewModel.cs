@@ -2,6 +2,7 @@
 using Project_WPF.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace Project_WPF.ViewModels
         private Customer customer;
         public string Land { get; set; }
         public string Straat { get; set; }
-        public string Gemeente { get; set; }
+        public string Stad { get; set; }
         public string Huisnummer { get; set; }
         public string Naam { get; set; }
         public decimal? Prijs { get; set; }
@@ -22,12 +23,23 @@ namespace Project_WPF.ViewModels
         public string DescriptionBeschrijving { get; set; }
         public string PreviewBeschrijving { get; set; }
         public string Categorie { get; set; }
+        public string Geschiktheid { get; set; }
 
+        public Category GeselecteerdeCategory { get; set; }
         public Location Location { get; set; }
+        public Category Category { get; set; }
+        public Preview Preview { get; set; }
+        public Description Description { get; set; }
+
+        public ObservableCollection<Location> Locations { get; set; }
+        public ObservableCollection<Category> Categories { get; set; }
+
 
         public DuiklocatieToevoegenViewModel(int? locationID, Customer customer)
         {
             this.customer = customer;
+
+            Categories = new ObservableCollection<Category>(unitOfWork.CategoryRepo.Ophalen());
 
             if (locationID != null)
             {
@@ -37,12 +49,14 @@ namespace Project_WPF.ViewModels
                 Land = Location.Land;
                 Prijs = Location.Prijs;
                 Straat = Location.Straat;
-                Gemeente = Location.Stad;
+                Stad = Location.Stad;
                 Diepte = Location.Diepte;
+                Geschiktheid = Location.Geschiktheid;
                 Huisnummer = Location.Huisnummer;
-                Categorie = Location.Category.Naam;
-                PreviewBeschrijving = Location.Preview.Beschrijving;
-                DescriptionBeschrijving = Location.Description.Beschrijving;
+                //Categorie = Location.Category.Naam;
+                GeselecteerdeCategory = Categories.FirstOrDefault(x => x.CategoryID == Location.CategoryID);
+                PreviewBeschrijving = Location.Preview.PreviewBeschrijving;
+                DescriptionBeschrijving = Location.Description.DescriptionBeschrijving;
             }
             else
             {
@@ -54,7 +68,7 @@ namespace Project_WPF.ViewModels
         {
             get
             {
-                if (columnName == "Gemeente" && string.IsNullOrEmpty(Gemeente))
+                if (columnName == "Stad" && string.IsNullOrEmpty(Stad))
                 {
                     return "De gemeente moet ingevuld worden!" + Environment.NewLine;
                 }
@@ -138,19 +152,24 @@ namespace Project_WPF.ViewModels
         }
         private void LocatieToevoegenOfAanpassen()
         {
-            if (Location.IsGeldig())
+            if (Location.LocationID > 0)
             {
-                if (Location.LocationID > 0)
+                Location.Naam = Naam;
+                Location.Prijs = Prijs;
+                Location.Diepte = Diepte;
+                Location.Land = Land;
+                Location.Straat = Straat;
+                Location.Stad = Stad;
+                Location.Huisnummer = Huisnummer;
+                Location.Geschiktheid = Geschiktheid;
+                Location.Category = GeselecteerdeCategory;
+                Location.Preview.PreviewBeschrijving = PreviewBeschrijving;
+                Location.Description.DescriptionBeschrijving = DescriptionBeschrijving;
+                if (Location.IsGeldig())
                 {
                     unitOfWork.LocationRepo.Aanpassen(Location);
                     MessageBox.Show("De locatie is succesvol aangepast");
                 }
-                else
-                {
-                    unitOfWork.LocationRepo.Toevoegen(Location);
-                    MessageBox.Show("De locatie is succesvol toegevoegd");
-                }
-
                 int ok = unitOfWork.Save();
                 if (ok > 0)
                 {
@@ -161,6 +180,39 @@ namespace Project_WPF.ViewModels
                     Application.Current.Windows[0].Close();
                 }
             }
+            else
+            {
+                Location Location = new Location();
+                Location.Naam = Naam;
+                Location.Prijs = Prijs;
+                Location.Diepte = Diepte;
+                Location.Land = Land;
+                Location.Straat = Straat;
+                Location.Stad = Stad;
+                Location.Huisnummer = Huisnummer;
+                Location.Geschiktheid = Geschiktheid;
+                Location.Category = GeselecteerdeCategory;
+                Preview Preview = new Preview();
+                Preview.PreviewBeschrijving = PreviewBeschrijving;
+                Description Description = new Description();
+                Description.DescriptionBeschrijving = DescriptionBeschrijving;
+                if (Location.IsGeldig())
+                {
+                    unitOfWork.LocationRepo.Toevoegen(Location);
+                    MessageBox.Show("De locatie is succesvol aangepast");
+                }
+                int ok = unitOfWork.Save();
+                if (ok > 0)
+                {
+                    DuiklocatieViewModel vm = new DuiklocatieViewModel(customer);
+                    DuiklocatieView view = new DuiklocatieView();
+                    view.DataContext = vm;
+                    view.Show();
+                    Application.Current.Windows[0].Close();
+                }
+            }
+
+
         }
         private void LocatieVerwijderen()
         {

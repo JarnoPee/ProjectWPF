@@ -93,6 +93,10 @@
     <Compile Include="Migrations\202101041314253_AdminUserAangepast.designer.cs">
       <DependentUpon>202101041314253_AdminUserAangepast.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101050950193_NaamAanpassingModel.cs" />
+    <Compile Include="Migrations\202101050950193_NaamAanpassingModel.designer.cs">
+      <DependentUpon>202101050950193_NaamAanpassingModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -112,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101041314253_AdminUserAangepast.resx">
       <DependentUpon>202101041314253_AdminUserAangepast.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101050950193_NaamAanpassingModel.resx">
+      <DependentUpon>202101050950193_NaamAanpassingModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

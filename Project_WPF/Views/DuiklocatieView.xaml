@@ -13,10 +13,11 @@
         TextOptions.TextRenderingMode="Auto"     
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Duiklocaties - JP Duik Locaties" Height="425" Width="700">
+        Title="Duiklocaties - JP Duik Locaties" Height="500" Width="700">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
@@ -25,10 +26,11 @@
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="txtZoeken" Text="{Binding Location.Naam, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Zoeken op Naam"
+        <TextBox x:Name="txtZoeken" Text="{Binding Naam, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Zoeken op Naam"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Height="auto" Width="475px" />
         <Button  Content="Zoeken" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="130"  Command="{Binding}" CommandParameter="Zoeken" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
-        <DataGrid x:Name="datagridOrderlijnen" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="275" IsReadOnly="True"
+        <Label Content="{Binding Foutmelding}" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Height="25" Foreground="Red"/>
+        <DataGrid x:Name="datagridOrderlijnen" AutoGenerateColumns="False" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="275" IsReadOnly="True"
                   ItemsSource="{Binding Locations}"
                   SelectedItem="{Binding SelectedLocation}" Margin="10"  Width="670">
             <DataGrid.Columns>
@@ -41,7 +43,7 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Stad}" Header="Locatie" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Category.Naam}" Header="Categorie" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Preview.Beschrijving}" Header="Beschrijving" Width="340">
+                <DataGridTextColumn Binding="{Binding Preview.PreviewBeschrijving}" Header="Beschrijving" Width="320">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -51,8 +53,8 @@
                 <DataGridTextColumn Binding="{Binding Prijs}" Header="Prijs" Width="auto"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button  Content="Terug naar dashboard" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="TerugNaarDashboard" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
-        <Button  Content="Bekijken" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="DuiklocatieBekijken" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
-        <Button  Content="Toevoegen/Wijzigen" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="DuiklocatieWijzigenOfToevoegen" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
+        <Button  Content="Terug naar dashboard" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="TerugNaarDashboard" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
+        <Button  Content="Bekijken" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="DuiklocatieBekijken" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
+        <Button  Content="Toevoegen/Wijzigen" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="DuiklocatieWijzigenOfToevoegen" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
     </Grid>
 </Window>

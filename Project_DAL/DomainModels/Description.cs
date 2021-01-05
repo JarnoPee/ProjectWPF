@@ -16,7 +16,7 @@ namespace Project_DAL.DomainModels
         public int DescriptionID { get; set; }
 
         [Required]
-        public string Beschrijving { get; set; }
+        public string DescriptionBeschrijving { get; set; }
 
         //navigatieproperties
         public ICollection<Location> Locations { get; set; }
