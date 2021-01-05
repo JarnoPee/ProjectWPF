@@ -97,6 +97,14 @@
     <Compile Include="Migrations\202101050950193_NaamAanpassingModel.designer.cs">
       <DependentUpon>202101050950193_NaamAanpassingModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101051107055_UpdateDatabase.cs" />
+    <Compile Include="Migrations\202101051107055_UpdateDatabase.designer.cs">
+      <DependentUpon>202101051107055_UpdateDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101051130277_AanpassenModel.cs" />
+    <Compile Include="Migrations\202101051130277_AanpassenModel.designer.cs">
+      <DependentUpon>202101051130277_AanpassenModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -119,6 +127,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101050950193_NaamAanpassingModel.resx">
       <DependentUpon>202101050950193_NaamAanpassingModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101051107055_UpdateDatabase.resx">
+      <DependentUpon>202101051107055_UpdateDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101051130277_AanpassenModel.resx">
+      <DependentUpon>202101051130277_AanpassenModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

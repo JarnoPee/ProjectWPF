@@ -13,7 +13,7 @@
         TextOptions.TextRenderingMode="Auto"     
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Duiklocaties - JP Duik Locaties" Height="500" Width="700">
+        Title="Duiklocaties - JP Duik Locaties" Height="450" Width="700">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -34,7 +34,7 @@
                   ItemsSource="{Binding Locations}"
                   SelectedItem="{Binding SelectedLocation}" Margin="10"  Width="670">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Naam}" Header="Naam" Width="100">
+                <DataGridTextColumn Binding="{Binding Naam}" Header="Naam" Width="80">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -43,7 +43,7 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Stad}" Header="Locatie" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Category.Naam}" Header="Categorie" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Preview.PreviewBeschrijving}" Header="Beschrijving" Width="320">
+                <DataGridTextColumn Binding="{Binding Preview.PreviewBeschrijving}" Header="Beschrijving" Width="300">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />

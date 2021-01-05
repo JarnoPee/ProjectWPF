@@ -143,7 +143,7 @@ namespace Project_WPF.ViewModels
         private void RefreshLocations()
         {
             string i = Naam;
-            List<Location> listLocation = unitOfWork.LocationRepo.Ophalen(x => x.Naam == i).ToList();
+            List<Location> listLocation = unitOfWork.LocationRepo.Ophalen(x => x.Naam.Contains(i)).ToList();
 
             Locations = new ObservableCollection<Location>(listLocation);
         }

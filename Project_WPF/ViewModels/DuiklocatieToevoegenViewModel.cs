@@ -74,7 +74,11 @@ namespace Project_WPF.ViewModels
                 }
                 else if (columnName == "Naam" && string.IsNullOrEmpty(Naam))
                 {
-                    return "Uw Naam moet ingevuld worden!" + Environment.NewLine;
+                    return "De Naam moet ingevuld worden!" + Environment.NewLine;
+                }
+                else if (columnName == "Geschiktheid" && string.IsNullOrEmpty(Geschiktheid))
+                {
+                    return "De geschiktheid moet ingevuld worden!" + Environment.NewLine;
                 }
                 //else if (columnName == "Prijs" && decimal.IsNullOrEmpty(Prijs))
                 //{
@@ -82,31 +86,31 @@ namespace Project_WPF.ViewModels
                 //}
                 else if (columnName == "Land" && string.IsNullOrEmpty(Land))
                 {
-                    return "Uw Land moet ingevuld worden!" + Environment.NewLine;
+                    return "De Land moet ingevuld worden!" + Environment.NewLine;
                 }
                 else if (columnName == "Straat" && string.IsNullOrEmpty(Straat))
                 {
-                    return "Uw Straat moet ingevuld worden!" + Environment.NewLine;
+                    return "De Straat moet ingevuld worden!" + Environment.NewLine;
                 }
                 else if (columnName == "Diepte" && string.IsNullOrEmpty(Diepte))
                 {
-                    return "Uw Diepte moet ingevuld worden!" + Environment.NewLine;
+                    return "De Diepte moet ingevuld worden!" + Environment.NewLine;
                 }
                 else if (columnName == "Huisnummer" && string.IsNullOrEmpty(Huisnummer))
                 {
-                    return "Uw Huisnummer moet ingevuld worden!" + Environment.NewLine;
+                    return "De Huisnummer moet ingevuld worden!" + Environment.NewLine;
                 }
                 else if (columnName == "Categorie" && string.IsNullOrEmpty(Categorie))
                 {
-                    return "Uw Categorie moet ingevuld worden!" + Environment.NewLine;
+                    return "De Categorie moet ingevuld worden!" + Environment.NewLine;
                 }
                 else if (columnName == "DescriptionBeschrijving" && string.IsNullOrEmpty(DescriptionBeschrijving))
                 {
-                    return "Uw beschrijving moet ingevuld worden!" + Environment.NewLine;
+                    return "De beschrijving moet ingevuld worden!" + Environment.NewLine;
                 }
                 else if (columnName == "PreviewBeschrijving" && string.IsNullOrEmpty(PreviewBeschrijving))
                 {
-                    return "Uw preview moet ingevuld worden!" + Environment.NewLine;
+                    return "De preview moet ingevuld worden!" + Environment.NewLine;
                 }
                 return "";
             }
@@ -198,6 +202,10 @@ namespace Project_WPF.ViewModels
                 Description.DescriptionBeschrijving = DescriptionBeschrijving;
                 if (Location.IsGeldig())
                 {
+                    unitOfWork.PreviewRepo.Toevoegen(Preview);
+                    unitOfWork.DescriptionRepo.Toevoegen(Description);
+                    Location.Description = Description;
+                    Location.Preview = Preview;
                     unitOfWork.LocationRepo.Toevoegen(Location);
                     MessageBox.Show("De locatie is succesvol aangepast");
                 }

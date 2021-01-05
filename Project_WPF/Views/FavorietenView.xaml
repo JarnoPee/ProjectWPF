@@ -24,11 +24,11 @@
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="datagridOrderlijnen" AutoGenerateColumns="False" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="300" IsReadOnly="True"
-                  ItemsSource="{Binding Locations, ValidatesOnDataErrors=True}"
-                  SelectedItem="{Binding SelectedLocation, ValidatesOnDataErrors=True}" Margin="10"  Width="670">
+        <DataGrid x:Name="datagridOrderlijnen" AutoGenerateColumns="False" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="275" IsReadOnly="True"
+                  ItemsSource="{Binding Locations}"
+                  SelectedItem="{Binding SelectedLocation}" Margin="10"  Width="670">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Naam}" Header="Naam" Width="100">
+                <DataGridTextColumn Binding="{Binding Naam}" Header="Naam" Width="80">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -37,7 +37,7 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Stad}" Header="Locatie" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Category.Naam}" Header="Categorie" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Preview.Beschrijving}" Header="Beschrijving" Width="340">
+                <DataGridTextColumn Binding="{Binding Preview.PreviewBeschrijving}" Header="Beschrijving" Width="300">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />

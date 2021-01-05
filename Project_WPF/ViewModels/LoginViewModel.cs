@@ -58,7 +58,7 @@ namespace Project_WPF.ViewModels
         }
         public void Login()
         {
-            //Gebruiker:  Email = "Test@hotmail.com" / Paswoord = "Test123!"
+            //Gebruiker:  Email = "Gebruiker@hotmail.com" / Paswoord = "Gebruiker!123"
             //Admin:  Email = "Admin@hotmail.com" / Paswoord = "Admin!123"
             byte[] data = System.Text.Encoding.ASCII.GetBytes(Paswoord);
             data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);

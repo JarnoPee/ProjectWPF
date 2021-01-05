@@ -34,3 +34,5 @@ E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_DAL\obj\
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_DAL\obj\Debug\Project_DAL.Migrations.AdminUserAangepast.resources
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_DAL\obj\Debug\Project_DAL.csprojAssemblyReference.cache
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_DAL\obj\Debug\Project_DAL.Migrations.NaamAanpassingModel.resources
+E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_DAL\obj\Debug\Project_DAL.Migrations.UpdateDatabase.resources
+E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_DAL\obj\Debug\Project_DAL.Migrations.AanpassenModel.resources
