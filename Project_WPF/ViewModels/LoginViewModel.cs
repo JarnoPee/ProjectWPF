@@ -68,7 +68,7 @@ namespace Project_WPF.ViewModels
             {
                 if (customer.IsAdmin == true)
                 {
-                    DashboardAdminViewModel vm = new DashboardAdminViewModel(customer);
+                    DashboardViewModel vm = new DashboardViewModel(customer);
                     DashboardAdminView view = new DashboardAdminView();
                     view.DataContext = vm;
                     view.Show();

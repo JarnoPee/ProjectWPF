@@ -81,12 +81,9 @@
     <Compile Include="ViewModels\AccountAdminViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\BasisViewModel.cs" />
-    <Compile Include="ViewModels\DashboardAdminViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\DuiklocatieToevoegenViewModel.cs" />
     <Compile Include="ViewModels\DuiklocatieViewModel.cs" />
-    <Compile Include="ViewModels\FavorietenViewModel.cs" />
-    <Compile Include="ViewModels\GekozenDuiklocatieViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\RegistrerenViewModel.cs" />
     <Compile Include="Views\AccountAdminView.xaml.cs">

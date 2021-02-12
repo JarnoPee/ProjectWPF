@@ -13,6 +13,7 @@ namespace Project_WPF.ViewModels
     class DuiklocatieToevoegenViewModel : BasisViewModel
     {
         private Customer customer;
+        public string Foutmelding { get; set; }
         public string Land { get; set; }
         public string Straat { get; set; }
         public string Stad { get; set; }
@@ -53,8 +54,8 @@ namespace Project_WPF.ViewModels
                 Diepte = Location.Diepte;
                 Geschiktheid = Location.Geschiktheid;
                 Huisnummer = Location.Huisnummer;
-                //Categorie = Location.Category.Naam;
                 GeselecteerdeCategory = Categories.FirstOrDefault(x => x.CategoryID == Location.CategoryID);
+                Categorie = Location.Category.Naam;
                 PreviewBeschrijving = Location.Preview.PreviewBeschrijving;
                 DescriptionBeschrijving = Location.Description.DescriptionBeschrijving;
             }
@@ -80,10 +81,10 @@ namespace Project_WPF.ViewModels
                 {
                     return "De geschiktheid moet ingevuld worden!" + Environment.NewLine;
                 }
-                //else if (columnName == "Prijs" && decimal.IsNullOrEmpty(Prijs))
-                //{
-                //    return "Uw Achternaam moet ingevuld worden!" + Environment.NewLine;
-                //}
+                else if (columnName == "Prijs" && Prijs == null)
+                {
+                    return "De prijs moet een numeriek getal zijn" + Environment.NewLine;
+                }
                 else if (columnName == "Land" && string.IsNullOrEmpty(Land))
                 {
                     return "De Land moet ingevuld worden!" + Environment.NewLine;
@@ -100,9 +101,9 @@ namespace Project_WPF.ViewModels
                 {
                     return "De Huisnummer moet ingevuld worden!" + Environment.NewLine;
                 }
-                else if (columnName == "Categorie" && string.IsNullOrEmpty(Categorie))
+                else if (columnName == "GeselecteerdeCategory" && GeselecteerdeCategory == null)
                 {
-                    return "De Categorie moet ingevuld worden!" + Environment.NewLine;
+                    return "De categorie moet ingevuld worden!" + Environment.NewLine;
                 }
                 else if (columnName == "DescriptionBeschrijving" && string.IsNullOrEmpty(DescriptionBeschrijving))
                 {
@@ -120,8 +121,22 @@ namespace Project_WPF.ViewModels
             switch (parameter.ToString())
             {
                 case "TerugNaarDashboard": return true;
-                case "LocatieVerwijderen": return true;
-                case "LocatieToevoegenOfAanpassen": return true;
+                case "LocatieVerwijderen":
+                    if (IsGeldig())
+                    {
+                        return true;
+
+                    }
+                    return false;
+                case "LocatieToevoegenOfAanpassen":
+                    if (IsGeldig())
+                    {
+                        return true;
+
+                    }
+                    return false;
+                case "ToevoegenLocationCustomer": return true;
+
             }
             return true;
         }
@@ -133,13 +148,15 @@ namespace Project_WPF.ViewModels
                 case "TerugNaarDashboard": OpenDashboard(); break;
                 case "LocatieVerwijderen": LocatieVerwijderen(); break;
                 case "LocatieToevoegenOfAanpassen": LocatieToevoegenOfAanpassen(); break;
+                case "ToevoegenLocationCustomer": OpenToevoegenLocationCustomer(); break;
+
             }
         }
         public void OpenDashboard()
         {
             if (customer.IsAdmin == true)
             {
-                DashboardAdminViewModel vm = new DashboardAdminViewModel(customer);
+                DashboardViewModel vm = new DashboardViewModel(customer);
                 DashboardAdminView view = new DashboardAdminView();
                 view.DataContext = vm;
                 view.Show();
@@ -169,20 +186,16 @@ namespace Project_WPF.ViewModels
                 Location.Category = GeselecteerdeCategory;
                 Location.Preview.PreviewBeschrijving = PreviewBeschrijving;
                 Location.Description.DescriptionBeschrijving = DescriptionBeschrijving;
-                if (Location.IsGeldig())
-                {
-                    unitOfWork.LocationRepo.Aanpassen(Location);
-                    MessageBox.Show("De locatie is succesvol aangepast");
-                }
-                int ok = unitOfWork.Save();
-                if (ok > 0)
-                {
-                    DuiklocatieViewModel vm = new DuiklocatieViewModel(customer);
-                    DuiklocatieView view = new DuiklocatieView();
-                    view.DataContext = vm;
-                    view.Show();
-                    Application.Current.Windows[0].Close();
-                }
+
+                unitOfWork.LocationRepo.Aanpassen(Location);
+                MessageBox.Show("De locatie is succesvol aangepast");
+                unitOfWork.Save();
+ 
+                DuiklocatieViewModel vm = new DuiklocatieViewModel(customer, "");
+                DuiklocatieView view = new DuiklocatieView();
+                view.DataContext = vm;
+                view.Show();
+                Application.Current.Windows[0].Close();
             }
             else
             {
@@ -200,24 +213,21 @@ namespace Project_WPF.ViewModels
                 Preview.PreviewBeschrijving = PreviewBeschrijving;
                 Description Description = new Description();
                 Description.DescriptionBeschrijving = DescriptionBeschrijving;
-                if (Location.IsGeldig())
-                {
-                    unitOfWork.PreviewRepo.Toevoegen(Preview);
-                    unitOfWork.DescriptionRepo.Toevoegen(Description);
-                    Location.Description = Description;
-                    Location.Preview = Preview;
-                    unitOfWork.LocationRepo.Toevoegen(Location);
-                    MessageBox.Show("De locatie is succesvol aangepast");
-                }
-                int ok = unitOfWork.Save();
-                if (ok > 0)
-                {
-                    DuiklocatieViewModel vm = new DuiklocatieViewModel(customer);
-                    DuiklocatieView view = new DuiklocatieView();
-                    view.DataContext = vm;
-                    view.Show();
-                    Application.Current.Windows[0].Close();
-                }
+
+                unitOfWork.PreviewRepo.Toevoegen(Preview);
+                unitOfWork.DescriptionRepo.Toevoegen(Description);
+                Location.Description = Description;
+                Location.Preview = Preview;
+                unitOfWork.LocationRepo.Toevoegen(Location);
+                MessageBox.Show("De locatie is succesvol aangepast");
+
+                unitOfWork.Save();
+
+                DuiklocatieViewModel vm = new DuiklocatieViewModel(customer, "DuiklocatieView");
+                DuiklocatieView view = new DuiklocatieView();
+                view.DataContext = vm;
+                view.Show();
+                Application.Current.Windows[0].Close();
             }
 
 
@@ -225,17 +235,52 @@ namespace Project_WPF.ViewModels
         private void LocatieVerwijderen()
         {
                 unitOfWork.LocationRepo.Verwijderen(Location);
-                int ok = unitOfWork.Save();
-                if (ok > 0)
-                {
-                    DuiklocatieViewModel vm = new DuiklocatieViewModel(customer);
+                unitOfWork.Save();
+                    DuiklocatieViewModel vm = new DuiklocatieViewModel(customer, "DuiklocatieView");
                     DuiklocatieView view = new DuiklocatieView();
                     view.DataContext = vm;
                     view.Show();
-                    Application.Current.Windows[0].Close();
-                }
-            
+                    Application.Current.Windows[0].Close();            
         }
+        public void OpenToevoegenLocationCustomer()
+        {
+            if (Location != null)
+            {
+                Foutmelding = "";
+                    try
+                    {
+                        LocationCustomer locationCustomer = new LocationCustomer()
+                        {
+                            LocationID = Location.LocationID,
+                            CustomerID = customer.CustomerID
+                        };
 
+                        if (locationCustomer.IsGeldig())
+                        {
+                            unitOfWork.LocationCustomerRepo.Toevoegen(locationCustomer);
+                            int ok = unitOfWork.Save();
+                            if (ok > 0)
+                            {
+                                DuiklocatieViewModel vm = new DuiklocatieViewModel(customer, "FavorietenView");
+                                FavorietenView view = new FavorietenView();
+                                view.DataContext = vm;
+                                view.Show();
+                                Application.Current.Windows[0].Close();
+                            }
+                        }
+
+                    }
+                    catch (Exception)
+                    {
+
+                        Foutmelding = "Deze is al toegevoegd bij uw favorieten";
+                    }
+
+            }
+        }
+        public void Dispose()
+        {
+            unitOfWork?.Dispose();
+        }
     }
 }

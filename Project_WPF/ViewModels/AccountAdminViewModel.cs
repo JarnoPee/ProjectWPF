@@ -14,6 +14,7 @@ namespace Project_WPF.ViewModels
     {
         private Customer customer;
         private Customer _selectedCustomer;
+        public string Foutmelding { get; set; }
         public ObservableCollection<Customer> Customer { get; set; }
         public Customer SelectedCustomer
         {
@@ -52,7 +53,7 @@ namespace Project_WPF.ViewModels
         }
         public void OpenDashboard()
         {
-                DashboardAdminViewModel vm = new DashboardAdminViewModel(customer);
+                DashboardViewModel vm = new DashboardViewModel(customer);
                 DashboardAdminView view = new DashboardAdminView();
                 view.DataContext = vm;
                 view.Show();
@@ -68,6 +69,10 @@ namespace Project_WPF.ViewModels
                 {
                     RefreshData();
                 }
+            }
+            else
+            {
+                Foutmelding = "Gelieve een locatie te selecteren!";
             }
         }
         private void RefreshData()

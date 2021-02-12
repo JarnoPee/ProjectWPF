@@ -13,16 +13,16 @@
         TextOptions.TextRenderingMode="Auto"     
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Account - JP Duik Locaties" Height="425" Width="700">
+        Title="Account - JP Duik Locaties" Height="450" Width="700">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="65px"/>
+            <RowDefinition Height="65px"/>
+            <RowDefinition Height="65px"/>
+            <RowDefinition Height="65px"/>
+            <RowDefinition Height="85px"/>
+
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -30,21 +30,21 @@
         </Grid.ColumnDefinitions>
         <Label Content="Account instellingen " HorizontalAlignment="Left" VerticalAlignment="Center" TextElement.FontSize="20" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Height="39"  Width="auto" Margin="30,0,0,0"  />
         <TextBox x:Name="txtAchternaam" Text="{Binding Achternaam, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Achternaam:"
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="0"  Height="auto" Width="auto" Margin="5,0.4,5,0" />
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="0" Width="auto" Margin="5,5,5,15" />
         <TextBox x:Name="txtVoornaam" Text="{Binding Voornaam, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Voornaam:"
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="1" Height="auto" Width="auto" Margin="5,0.4,5,0" />
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="1" Height="auto" Width="auto" Margin="5,5,5,15" />
         <TextBox x:Name="txtEmail" Text="{Binding Email, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Email:"
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="2" Grid.Column="0" Height="auto" Width="auto" Margin="5,0.4,5,0" />
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="2" Grid.Column="0" Height="auto" Width="auto" Margin="5,5,5,15" />
         <TextBox x:Name="txtLand" Text="{Binding Land, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Land:"
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="2" Grid.Column="1" Height="auto" Width="auto" Margin="5,0.4,5,0" />
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="2" Grid.Column="1" Height="auto" Width="auto" Margin="5,5,5,15" />
         <TextBox x:Name="txtGemeente" Text="{Binding Gemeente, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Stad:"
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="3" Grid.Column="0" Height="auto" Width="auto" Margin="5,0.4,5,0" />
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="3" Grid.Column="0" Height="auto" Width="auto" Margin="5,5,5,15" />
         <TextBox x:Name="txtPostcode" Text="{Binding Postcode, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Postcode:"
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="3" Grid.Column="1" Height="auto" Width="auto" Margin="5,0.4,5,0" />
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="3" Grid.Column="1" Height="auto" Width="auto" Margin="5,5,5,15" />
         <TextBox x:Name="txtStraat" Text="{Binding Straat, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Straat:"
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="4" Grid.Column="0" Height="auto" Width="auto" Margin="5,0.4,5,0" />
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="4" Grid.Column="0" Height="auto" Width="auto" Margin="5,5,5,15" />
         <TextBox x:Name="txtHuisnummer" Text="{Binding Huisnummer, ValidatesOnDataErrors=True}" materialDesign:HintAssist.Hint="Huisnummer:"
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Height="auto" Width="auto" Margin="5,0.4,5,0" />
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Height="auto" Width="auto" Margin="5,5,5,15" />
         <Button  Content="Terug naar dashboard" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="TerugNaarDashboard" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
         <Button  Content="Gegevens Aanpassen" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="GegevensAanpassen" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
     </Grid>

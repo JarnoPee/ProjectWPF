@@ -105,6 +105,10 @@
     <Compile Include="Migrations\202101051130277_AanpassenModel.designer.cs">
       <DependentUpon>202101051130277_AanpassenModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102081025043_modelaangepst.cs" />
+    <Compile Include="Migrations\202102081025043_modelaangepst.designer.cs">
+      <DependentUpon>202102081025043_modelaangepst.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -133,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101051130277_AanpassenModel.resx">
       <DependentUpon>202101051130277_AanpassenModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102081025043_modelaangepst.resx">
+      <DependentUpon>202102081025043_modelaangepst.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -15,6 +15,7 @@ E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\bin\
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\bin\Debug\MaterialDesignThemes.Wpf.xml
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Project_WPF.csprojAssemblyReference.cache
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Components\BindablePasswordBox.g.cs
+E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Views\AccountAdminView.g.cs
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Views\AccountView.g.cs
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Views\DashboardAdminView.g.cs
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Views\DashboardView.g.cs
@@ -30,6 +31,7 @@ E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Project_WPF_MarkupCompile.lref
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\App.baml
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Components\BindablePasswordBox.baml
+E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Views\AccountAdminView.baml
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Views\AccountView.baml
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Views\DashboardAdminView.baml
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Views\DashboardView.baml
@@ -47,5 +49,3 @@ E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Project_WPF.csproj.CopyComplete
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Project_WPF.exe
 E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Project_WPF.pdb
-E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Views\AccountAdminView.g.cs
-E:\AA Thomas More\2020 - 2021\Gevorderd Programmeren\ProjectWPF\Project_WPF\obj\Debug\Views\AccountAdminView.baml

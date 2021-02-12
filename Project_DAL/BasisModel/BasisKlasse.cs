@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Project_DAL.BasisModel
 {
-    public abstract class Basisklasse : IDataErrorInfo
+    public abstract class Basisklasse : IDataErrorInfo , INotifyPropertyChanged
     {
         [NotMapped]
         public virtual string this[string columnName]
@@ -39,6 +39,8 @@ namespace Project_DAL.BasisModel
             }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public bool IsGeldig()
         {
             return string.IsNullOrWhiteSpace(Error);
@@ -50,7 +52,7 @@ namespace Project_DAL.BasisModel
             get
             {
                 string foutmeldingen = "";
-                foreach (var item in this.GetType().GetProperties(BindingFlags.DeclaredOnly)) //reflection 
+                foreach (var item in this.GetType().GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public).Where(x => x.CanWrite == true)) //reflection 
                 {
                     string fout = this[item.Name];
                     if (!string.IsNullOrWhiteSpace(fout))

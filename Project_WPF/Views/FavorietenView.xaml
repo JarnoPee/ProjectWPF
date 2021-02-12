@@ -18,6 +18,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
@@ -25,30 +26,32 @@
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
         <DataGrid x:Name="datagridOrderlijnen" AutoGenerateColumns="False" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="275" IsReadOnly="True"
-                  ItemsSource="{Binding Locations}"
-                  SelectedItem="{Binding SelectedLocation}" Margin="10"  Width="670">
+                  ItemsSource="{Binding LocationCustomers}"
+                  SelectedItem="{Binding SelectedLocationCustomer}" Margin="10"  Width="670">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Naam}" Header="Naam" Width="80">
+                <DataGridTextColumn Binding="{Binding Location.Naam}" Header="Naam" Width="80">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Stad}" Header="Locatie" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Category.Naam}" Header="Categorie" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Preview.PreviewBeschrijving}" Header="Beschrijving" Width="300">
+                <DataGridTextColumn Binding="{Binding Location.Stad}" Header="Locatie" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Location.Category.Naam}" Header="Categorie" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Location.Preview.PreviewBeschrijving}" Header="Beschrijving" Width="300">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Prijs}" Header="Prijs" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Location.Prijs}" Header="Prijs" Width="auto"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Button  Content="Terug naar dashboard" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="TerugNaarDashboard" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
         <Button  Content="Verwijderen uit favorieten" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="VerwijderenLocationCustomer" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
-        <Button  Content="Locatie bekijken" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="LocatieBekijken" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
+        <Button  Content="Locatie bekijken" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="LocatieBekijken" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
+        <Label Content="{Binding Foutmelding}" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" TextElement.FontSize="18" Height="39"  Width="auto"  />
+
     </Grid>
 </Window>

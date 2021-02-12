@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -11,8 +12,9 @@ using Project_WPF.Views;
 
 namespace Project_WPF.ViewModels
 {
-    public class RegistrerenViewModel : BasisViewModel, ICommand 
+    public class RegistrerenViewModel : BasisViewModel, ICommand
     {
+        public string Foutmelding { get; set; }
         public string Paswoord { get; set; }
         public string Email { get; set; }
         public string Land { get; set; }
@@ -22,13 +24,17 @@ namespace Project_WPF.ViewModels
         public string Postcode { get; set; }
         public string Achternaam { get; set; }
         public string Voornaam { get; set; }
+        public RegistrerenViewModel()
+        {
+            Email = "";
+        }
         public override string this[string columnName]
         {
             get
             {
-                if (columnName == "Email" && string.IsNullOrEmpty(Email))
+                if (columnName == "Email" && !(IsEenValideEmailAdres(Email)))
                 {
-                    return "Email moet ingevuld worden!" + Environment.NewLine;
+                    return "Gelieve een valide e-mail adres in te geven." + Environment.NewLine;
                 }
                 else if (columnName == "Voornaam" && string.IsNullOrEmpty(Voornaam))
                 {
@@ -69,11 +75,15 @@ namespace Project_WPF.ViewModels
                 return "";
             }
         }
+        static bool IsEenValideEmailAdres(string emailadres)
+        {
+            return Regex.IsMatch(emailadres, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+        }
         public override bool CanExecute(object parameter)
         {
             switch (parameter.ToString())
             {
-                case "TerugNaarDashboard": return true;
+                case "TerugNaarLogin": return true;
                 case "Registreren":
                     if (IsGeldig())
                     {
@@ -108,16 +118,28 @@ namespace Project_WPF.ViewModels
                 byte[] data = System.Text.Encoding.ASCII.GetBytes(Paswoord);
                 data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
                 string hash = System.Text.Encoding.ASCII.GetString(data);
-
+                Foutmelding = "";
                 Customer customer = new Customer() { Email = Email, Paswoord = hash, Voornaam = Voornaam, Achternaam = Achternaam, Gemeente = Gemeente, Land = Land, Huisnummer = Huisnummer, Postcode = Postcode, Straat = Straat };
-                unitOfWork.CustomerRepo.Toevoegen(customer);
-                unitOfWork.Save();
+                if (customer.IsGeldig())
+                {
+                    if (unitOfWork.CustomerRepo.Ophalen(x => x.Email == Email).Any() == false)
+                    {
+                        unitOfWork.CustomerRepo.Toevoegen(customer);
+                        int ok = unitOfWork.Save();
+                        if (ok > 0)
+                        {
+                        OpenLogin();
+                        }
+                    }
+                    else
+                    {
+                    Foutmelding = "Email is in gebruik";
+                    }
 
-                LoginViewModel vm = new LoginViewModel();
-                LoginView view = new LoginView();
-                view.DataContext = vm;
-                view.Show();
-                Application.Current.Windows[0].Close();
+                }
+
+
+
         }
     }
 }

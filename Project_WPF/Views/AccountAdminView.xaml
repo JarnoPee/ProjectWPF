@@ -13,10 +13,11 @@
         TextOptions.TextRenderingMode="Auto"     
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Alle Accounts - JP Duik Locaties" Height="425" Width="700">
+        Title="Alle Accounts - JP Duik Locaties" Height="450" Width="700">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
@@ -39,5 +40,6 @@
         </DataGrid>
         <Button  Content="Terug naar dashboard" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="TerugNaarDashboard" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
         <Button  Content="Verwijderen" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto"  Command="{Binding}" CommandParameter="CustomerVerwijderen" Background="#6abf69" BorderBrush="#6abf69" materialDesign:ButtonAssist.CornerRadius="10"/>
+        <Label Content="{Binding Foutmelding}" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" Height="25" Foreground="Red"/>
     </Grid>
 </Window>

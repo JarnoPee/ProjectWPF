@@ -19,9 +19,11 @@ namespace Project_WPF.ViewModels
         private Location _selectedLocation;
         public string Naam { get; set; }
         public string Foutmelding { get; set; }
-
-
         public ObservableCollection<Location> Locations { get; set; }
+        public LocationCustomer SelectedLocationCustomer { get; set; }
+        public Location Location { get; set; }
+        public ObservableCollection<LocationCustomer> LocationCustomers { get; set; }
+
         public Location SelectedLocation 
         {
             get { return _selectedLocation; }
@@ -39,10 +41,17 @@ namespace Project_WPF.ViewModels
                 return "";
             }
         }
-        public DuiklocatieViewModel(Customer customer) : base()
+        public DuiklocatieViewModel(Customer customer, string keuzeView) : base()
         {
             this.customer = customer;
-            Locations = new ObservableCollection<Location>(unitOfWork.LocationRepo.Ophalen(x => x.Category, x => x.Preview));
+            if (keuzeView == "DuiklocatieView")
+            {
+                Locations = new ObservableCollection<Location>(unitOfWork.LocationRepo.Ophalen(x => x.Category, x => x.Preview));
+            }
+            else
+            {
+                LocationCustomers = new ObservableCollection<LocationCustomer>(unitOfWork.LocationCustomerRepo.Ophalen(x => x.CustomerID == customer.CustomerID, x => x.Location, x => x.Location.Category, x => x.Location.Preview));
+            }
 
         }
         public override bool CanExecute(object parameter)
@@ -53,6 +62,9 @@ namespace Project_WPF.ViewModels
                 case "DuiklocatieBekijken": return true;
                 case "DuiklocatieWijzigenOfToevoegen": return true;
                 case "Zoeken": return true;
+                case "VerwijderenLocationCustomer": return true;
+                case "LocatieBekijken": return true;
+
             }
             return true;
         }
@@ -64,13 +76,16 @@ namespace Project_WPF.ViewModels
                 case "DuiklocatieBekijken": DuiklocatieBekijken(); break;
                 case "DuiklocatieWijzigenOfToevoegen": DuiklocatieWijzigenOfToevoegen(); break;
                 case "Zoeken": Zoeken(); break;
+                case "VerwijderenLocationCustomer": VerwijderenLocationCustomer(); break;
+                case "LocatieBekijken": DuiklocatieBekijkenFavorieten(); break;
+
             }
         }
         public void OpenDashboard()
         {
             if (customer.IsAdmin == true)
             {
-                DashboardAdminViewModel vm = new DashboardAdminViewModel(customer);
+                DashboardViewModel vm = new DashboardViewModel(customer);
                 DashboardAdminView view = new DashboardAdminView();
                 view.DataContext = vm;
                 view.Show();
@@ -91,7 +106,7 @@ namespace Project_WPF.ViewModels
             if (SelectedLocation != null)
             {
                 GekozenDuiklocatieView location = new GekozenDuiklocatieView();
-                GekozenDuiklocatieViewModel gekozenDuiklocatieViewModel = new GekozenDuiklocatieViewModel(SelectedLocation.LocationID, customer);
+                DuiklocatieToevoegenViewModel gekozenDuiklocatieViewModel = new DuiklocatieToevoegenViewModel(SelectedLocation.LocationID, customer);
                 location.DataContext = gekozenDuiklocatieViewModel;
                 location.Show();
                 Application.Current.Windows[0].Close();
@@ -133,11 +148,10 @@ namespace Project_WPF.ViewModels
                 {
                     Locations = new ObservableCollection<Location>(unitOfWork.LocationRepo.Ophalen(x => x.Category, x => x.Preview));
                 }
-
             }
             else
             {
-                Foutmelding = this.Error;
+                Foutmelding = "Geen locatie met deze naam gevonden!";
             }
         }
         private void RefreshLocations()
@@ -151,5 +165,42 @@ namespace Project_WPF.ViewModels
         {
             unitOfWork?.Dispose();
         }
+        public void VerwijderenLocationCustomer()
+        {
+            if (SelectedLocationCustomer != null)
+            {
+                unitOfWork.LocationCustomerRepo.Verwijderen(SelectedLocationCustomer.LocationCustomerID);
+                int ok = unitOfWork.Save();
+                if (ok > 0)
+                {
+                    RefreshData();
+                }
+            }
+            else
+            {
+                Foutmelding = "Gelieve een locatie te selecteren!";
+            }
+        }
+        private void DuiklocatieBekijkenFavorieten()
+        {
+            if (SelectedLocationCustomer != null)
+            {
+                GekozenDuiklocatieView location = new GekozenDuiklocatieView();
+                DuiklocatieToevoegenViewModel gekozenDuiklocatieViewModel = new DuiklocatieToevoegenViewModel(SelectedLocationCustomer.LocationID, customer);
+                location.DataContext = gekozenDuiklocatieViewModel;
+                location.Show();
+                Application.Current.Windows[0].Close();
+            }
+            else
+            {
+                Foutmelding = "Gelieve een locatie te selecteren!";
+            }
+        }
+        private void RefreshData()
+        {
+            LocationCustomers = new ObservableCollection<LocationCustomer>(unitOfWork.LocationCustomerRepo.Ophalen(x => x.CustomerID == customer.CustomerID, x => x.Location, x => x.Location.Category, x => x.Location.Preview));
+            Foutmelding = "";
+        }
+
     }
 }
